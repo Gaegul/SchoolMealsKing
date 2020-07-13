@@ -11,31 +11,3 @@
 1. 나이스 api를 이용한 전국의 급식 정보를 파싱하여 Elastic search에 넣는다.
 2. 파싱된 급식 정보는 검색이 최적화 될 수 있도록 네임 태그등의 후가공 처리를 한다.
 3. 사용자는 elastic search에서 나이스보다 빠르게 급식을 파싱할 수 있다.
-
-### Api
-
-- 학교 리스트 조회
-
-    [학교 리스트 조회[GET]](https://www.notion.so/GET-8872e12fc53949edbe75d8fb077ac410)
-
-- 어떠한 학교의 최근 7일간 급식 정보 조회
-
-    [최근 7일간 급식 조회[GET]](https://www.notion.so/7-GET-a82aba9c345b4f3281eb2c4279d9dc9a)
-
-- 오늘 우리 학교의 급식 조회
-
-    [오늘 우리학교 급식 조회[GET]](https://www.notion.so/GET-a0a33d992f6f451e821c63d1d386ad59)
-
-- 오늘 급식이 제일 맛있는 학교 랭킹(중식 기준)
-
-    [오늘 급식이 제일 맛있는 고등학교[GET] in g](https://www.notion.so/GET-in-g-6e78e49c3e75497cb6d635a2252b3ccf)
-
-- 우리 학교와 똑같은 급식인 학교는?
-
-    [급식이 똑같은 학교 리스트[GET] ing](https://www.notion.so/GET-ing-9785ec0adf8b417a91291e8336534643)
-
-### 급식 파싱
-
-[https://open.neis.go.kr/portal/data/service/selectServicePage.do?page=1&rows=10&sortColumn=&sortDirection=&infId=OPEN17320190722180924242823&infSeq=2](https://open.neis.go.kr/portal/data/service/selectServicePage.do?page=1&rows=10&sortColumn=&sortDirection=&infId=OPEN17320190722180924242823&infSeq=2)
-
-나이스 api 에서 확인 가능
