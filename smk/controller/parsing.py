@@ -1,14 +1,14 @@
 import requests
 import json
+import re
 from flask import abort
 
 from smk import PARSING_URL, PARSING_KEY
-from smk.ES import es, make_index
+from smk.ES import es
 
 
 def parsing(start_date, end_date):
     try:
-        make_index(es, "smk")
         params = {'KEY': PARSING_KEY,
                  'Type': 'json',
                  'pIndex': 1,
@@ -27,13 +27,13 @@ def parsing(start_date, end_date):
 
         for meal in meals:
             body = {
-                'Type': meal['MMEAL_SC_NM'],
-                'Meal': meal['DDISH_NM'],
-                'Date': meal['MLSV_YMD']
+                'Date': meal['MLSV_YMD'],
+                'Meal': re.split("[^ \u3131-\u3163\uac00-\ud7a3]+", meal['DDISH_NM']),
+                'Type': meal['MMEAL_SC_NM']
             }
-            es.index(index="smk", doc_type='string', body=body)
+            es.index(index="schoolmeal", body=body)
 
-        es.indices.refresh(index='smk')
+        es.indices.refresh(index='schoolmeal')
 
         meal_count = len(meals)
 
@@ -41,5 +41,5 @@ def parsing(start_date, end_date):
             "message": f"{start_date}에서 {end_date}사이의 급식 {meal_count}만큼 ES에 저장되었습니다."
         }
 
-    except RuntimeError:
+    except KeyError:
         return abort(500, "server error")
